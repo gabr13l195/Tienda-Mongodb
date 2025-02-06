@@ -33,17 +33,20 @@ public class ProductoServicio {
     }
     //Optional es un contenedor de producto
     //Si encuentra el producto con el ID genera algo si no un null
-    public Optional<Producto> buscarProducto(Long id){
+    public Optional<Producto> buscarProducto(String id){
+
         return productoRepositorio.findById(id);
     }
 
     //Metodo que no devuelve nada
     public void guardarProducto(Producto producto){
+
         productoRepositorio.save(producto);
     }
 
     //Metodo para eliminar producto
-    public void eliminarProducto(Long id){
+    public void eliminarProducto(String id){
+
         productoRepositorio.deleteById(id);
     }
 }

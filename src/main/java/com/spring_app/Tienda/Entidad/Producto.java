@@ -1,21 +1,18 @@
 package com.spring_app.Tienda.Entidad;
 
-import jakarta.persistence.*;
+
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 //Este objeto se transformo en una tabla
-@Data
-@Entity
-@Table(name="tabla-producto")
+@Document(collection = "productos")
 public class Producto {
 
-    //Campo autoincrementable de la clave primaria
+    //En nosql se maneja string y no puede ser autoincrementable
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
-    //Este campo va a ser unico
-    @Column(unique = true, nullable = false)
     private String nombre;
 
 
@@ -23,12 +20,11 @@ public class Producto {
 
     private int stock;
 
-
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -40,19 +36,19 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public Double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(Double precio) {
-        this.precio = precio;
-    }
-
     public int getStock() {
         return stock;
     }
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
     }
 }

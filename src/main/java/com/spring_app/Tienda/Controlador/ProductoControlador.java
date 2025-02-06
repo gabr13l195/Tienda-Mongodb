@@ -43,7 +43,7 @@ public class ProductoControlador {
 
     //ACTUALIZAR
     @GetMapping("/editar/{id}")
-    public String editarProducto(@PathVariable Long id, Model model){
+    public String editarProducto(@PathVariable String id, Model model){
         Optional<Producto> producto = productoServicio.buscarProducto(id);
         model.addAttribute("producto", producto);
         return "Producto/formulario";
@@ -51,7 +51,7 @@ public class ProductoControlador {
 
     //ELIMINAR
     @GetMapping("/eliminar/{id}")
-    public String eliminarProducto(@PathVariable Long id){
+    public String eliminarProducto(@PathVariable String id){
         productoServicio.eliminarProducto(id);
         return "redirect:/productos"; //PUSO LIBROS EN EL VIDEO
     }
